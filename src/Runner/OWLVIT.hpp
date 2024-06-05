@@ -24,7 +24,7 @@ protected:
 
     const char
         *TextEncInputNames[2]{"input_ids", "attention_mask"},
-        *TextEncOutputNames[1]{"text_embeds"},
+        *TextEncOutputNames[1]{"/owlvit/Div_output_0"},
         *DecoderInputNames[3]{"image_embeds", "/owlvit/Div_output_0", "input_ids"},
         *DecoderOutputNames[1]{"logits"};
 
