@@ -2,7 +2,7 @@
 
 import onnx
 
-input_path = "weights/owlvit.onnx"
+input_path = "weights/owlvit_smi.onnx"
 output_path = "weights/owlvit-image.onnx"
 input_names = ["pixel_values"]
 output_names = ["image_embeds","pred_boxes"]

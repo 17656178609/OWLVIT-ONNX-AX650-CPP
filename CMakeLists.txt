@@ -42,7 +42,7 @@ link_directories("${ONNXRUNTIME_DIR}/lib")
 set(ONNXRUNTIME_LIB onnxruntime)
 
 if(NOT OpenCV_DIR)
-    set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/third_party/opencv-mobile-4.6.0-ubuntu-2004/lib/cmake/opencv4)
+    set(OpenCV_DIR ${CMAKE_SOURCE_DIR}/third_party/libopencv/lib/cmake/opencv4)
 endif()
 
 message(STATUS "OPENCV_DIR Path: ${OpenCV_DIR}")

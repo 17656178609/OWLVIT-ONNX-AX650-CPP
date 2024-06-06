@@ -1,0 +1,2 @@
+cd build
+./main --ienc /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/scripts/weights/owlvit-image.onnx --tenc /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/scripts/weights/owlvit-text.onnx --dec /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/scripts/weights/owlvit-post.onnx -v /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/vocab.txt -i /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/ssd_horse.jpg -t /home/chenhaiwei/code/OWLVIT-ONNX-AX650-CPP/text.txt

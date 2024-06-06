@@ -3,4 +3,4 @@ weights
 __pycache__
 axpi_pro_bsp_sdk
 build*
-third_party
+# third_party
