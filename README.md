@@ -8,33 +8,50 @@ https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/assets/46700201/51daa50c-170
 
 <img src="ssd_horse.jpg" height="300" /> <img src="result.jpg" height="300" />
 
-## Get ONNX Model
-[README](scripts/README.md)
+## Model
+~~~
+cd scrips
+mkdir weights
+~~~
+将下面4个模型文件放到weights目录下：
+[owlvit-image.axmodel](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-image.axmodel)  # for image encode
+[owlvit-image.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-image.onnx) # for image encode
+[owlvit-post.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-post.onnx) # post process to get logits result
+[owlvit-text.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-text.onnx) # for text encode
+
 
 ## Build
+if x86 onnxruntime no ui
 ```
-mkdir build
-cd build
+./x86_build.sh
 ```
-if x86 onnxruntime
+else if x86 onnxruntime ui
 ```
-cmake -DONNXRUNTIME_DIR=${onnxruntime_dir} -DOpenCV_DIR=${opencv_cmake_file_dir} ..
+cd qtproj/OWLVITQT
+./x86_build_ui.sh
 ```
 else if ax650
 ```
-cmake -DONNXRUNTIME_DIR=${onnxruntime_dir} -DOpenCV_DIR=${opencv_cmake_file_dir} -DBSP_MSP_DIR=${msp_out_dir} -DBUILD_WITH_AX650=ON -DCMAKE_TOOLCHAIN_FILE=../toolchains/aarch64-none-linux-gnu.toolchain.cmake ..
+./ax650_build.sh
 ```
-```
-make -j4
-```
-aarch64-none-gnu library:\
-[onnxruntime](https://github.com/ZHEQIUSHUI/SAM-ONNX-AX650-CPP/releases/download/ax_models/onnxruntime-aarch64-none-gnu-1.16.0.zip)\
-[opencv](https://github.com/ZHEQIUSHUI/SAM-ONNX-AX650-CPP/releases/download/ax_models/libopencv-4.6-aarch64-none.zip)
 
 ### Run
+if x86 onnxruntime no ui
 ```
-/opt/test/owlvit # ./main --ienc owlvit-image.axmodel --tenc owlvit-text.onnx -d
- owlvit-post.onnx -v vocab.txt -i ssd_horse.jpg -t text.txt --thread 8
+./run_x86.sh
+```
+else if x86 onnxruntime ui
+```
+cd qtproj/OWLVITQT
+./run_x86_ui.sh   # 需要有显示器
+```
+else if ax650
+```
+scp build/main root@192.168.8.68:/mnt/sdcard/chenhaiwei/owlvit/
+scp scripts/weights/owlvit-* root@192.168.8.68:/mnt/sdcard/chenhaiwei/owlvit/
+./main --ienc owlvit-image.axmodel --tenc owlvit-text.onnx -d owlvit-post.onnx -v vocab.txt -i ssd_horse.jpg -t text.txt --thread 8
+
+# 结果如下：
 Engine creating handle is done.
 Engine creating context is done.
 Engine get io info is done.
