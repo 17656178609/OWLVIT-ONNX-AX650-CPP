@@ -2,3 +2,4 @@ cat
 dog
 bird
 person
+box

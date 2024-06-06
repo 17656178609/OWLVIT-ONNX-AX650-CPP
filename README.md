@@ -1,12 +1,8 @@
 # OWLVIT
 
-https://huggingface.co/docs/transformers/model_doc/owlvit
+[huggingface](https://huggingface.co/docs/transformers/model_doc/owlvit)上介绍
 
-
-https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/assets/46700201/51daa50c-170d-4a30-a13b-6e2d659cd05c
-
-
-<img src="ssd_horse.jpg" height="300" /> <img src="result.jpg" height="300" />
+ <img src="result.jpg" height="300" />
 
 ## Model
 ~~~
@@ -15,24 +11,27 @@ mkdir weights
 ~~~
 将下面4个模型文件放到weights目录下：
 [owlvit-image.axmodel](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-image.axmodel)  # for image encode
+
 [owlvit-image.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-image.onnx) # for image encode
+
 [owlvit-post.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-post.onnx) # post process to get logits result
+
 [owlvit-text.onnx](https://github.com/AXERA-TECH/OWLVIT-ONNX-AX650-CPP/releases/download/v0.1/owlvit-text.onnx) # for text encode
 
 
 ## Build
 if x86 onnxruntime no ui
 ```
-./x86_build.sh
+./build_x86.sh
 ```
 else if x86 onnxruntime ui
 ```
 cd qtproj/OWLVITQT
-./x86_build_ui.sh
+./build_x86.sh
 ```
 else if ax650
 ```
-./ax650_build.sh
+./build_ax650.sh
 ```
 
 ### Run

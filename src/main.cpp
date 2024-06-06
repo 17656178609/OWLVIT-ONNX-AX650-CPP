@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
     std::string image_encoder_model_path;
     std::string text_encoder_model_path;
     std::string decoder_model_path;
-    float bbox_threshold = 0.2;
+    float bbox_threshold = 0.03;
     int num_thread = 8;
 
     cmdline::parser cmd;
